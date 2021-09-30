@@ -4,7 +4,7 @@ We used the `tsgen` function in class. Here's a quick explanation of that functi
 
 The goal is to make it easy to simulate from an arbitrary time series process without having to iterate over observations, store data, and that sort of thing. In 2021, it's better to use languages and libraries that automate those things. Having to write out those details yourself every time leads to bugs and a lot of wasted effort.
 
-The arguments to `tsgen` are
+The arguments to `tsgen(n, f, init, trend=FALSE)` are
 
 - n: The number of observations you want to generate.
 - f: The function that generates one observation of the simulated data.
