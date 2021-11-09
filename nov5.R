@@ -1,0 +1,15 @@
+library(tstools)
+library(vars)
+dgdp.raw <- read.csv("dgdp.csv", header=TRUE)
+dgdp <- ts(dgdp.raw[,2], start=c(1947,2), frequency=4)
+ffr.raw <- read.csv("fedfunds.csv", header=TRUE)
+ffr <- ts(ffr.raw[,2], start=c(1954,3), frequency=4)
+core.raw <- read.csv("corecpi.csv", header=TRUE)
+core <- ts(core.raw[,2], start=c(1957,1),
+           frequency=4)
+coreinf <- 400*pctChange(core)
+tsdata <- ts.combine(dgdp, coreinf, ffr)
+varfit <- VAR(tsdata, lag.max=5, ic="AIC")
+fevd(varfit, n.ahead=24)
+0.44545788 + 0.02874333 + 0.5257988
+plot(fevd(varfit, n.ahead=24))
