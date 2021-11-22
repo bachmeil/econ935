@@ -25,8 +25,8 @@ res.ffr <- res[,"ffr"]
 
 # Generate a new set of residuals
 set.seed(100)
-res.infsim <- sample(res.inf)
-res.ffrsim <- sample(res.ffr)
+res.infsim <- sample(res.inf, replace=TRUE)
+res.ffrsim <- sample(res.ffr, replace=TRUE)
 
 # Generate a new sample of both variables using a loop
 # (In general, avoid loops)
